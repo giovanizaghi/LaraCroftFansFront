@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DB_A37A16_zaghiniModelStoreContainer" CdmEntityContainer="DB_A37A16_zaghiniEntities">
+    <EntitySetMapping Name="posts">
+      <EntityTypeMapping TypeName="DB_A37A16_zaghiniModel.posts">
+        <MappingFragment StoreEntitySet="posts">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="postdate" ColumnName="postdate" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="onlyregistercanread" ColumnName="onlyregistercanread" />
+          <ScalarProperty Name="iduser" ColumnName="iduser" />
+          <ScalarProperty Name="idtag" ColumnName="idtag" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tags">
+      <EntityTypeMapping TypeName="DB_A37A16_zaghiniModel.tags">
+        <MappingFragment StoreEntitySet="tags">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="DB_A37A16_zaghiniModel.users">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="idusertype" ColumnName="idusertype" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usertype">
+      <EntityTypeMapping TypeName="DB_A37A16_zaghiniModel.usertype">
+        <MappingFragment StoreEntitySet="usertype">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="section">
+      <EntityTypeMapping TypeName="DB_A37A16_zaghiniModel.section">
+        <MappingFragment StoreEntitySet="section">
+          <ScalarProperty Name="defaultItem" ColumnName="defaultItem" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sectionitem">
+      <EntityTypeMapping TypeName="DB_A37A16_zaghiniModel.sectionitem">
+        <MappingFragment StoreEntitySet="sectionitem">
+          <ScalarProperty Name="image" ColumnName="image" />
+          <ScalarProperty Name="idsection" ColumnName="idsection" />
+          <ScalarProperty Name="onlyregistercanread" ColumnName="onlyregistercanread" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

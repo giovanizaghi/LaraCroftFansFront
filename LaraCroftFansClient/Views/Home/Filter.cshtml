@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Lara Croft Fans - Filter";
+
+    int idTag = 0;
+
+    if(Session["idTag"]!= null)
+    {
+        idTag = Int32.Parse(Session["idTag"].ToString());
+    }
+}
+
+<input type="hidden" id="idTag" value="@idTag"/>
+
+<h1 id="title"></h1>
+
+<ul id="filterDiv"></ul>

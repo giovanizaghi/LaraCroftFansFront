@@ -1,0 +1,227 @@
+﻿@font-face {
+    font-family: 'fontello';
+    src: url('../fonts/fontello.eot?18056628');
+    src: url('../fonts/fontello.eot?18056628#iefix') format('embedded-opentype'), url('../fonts/fontello.woff?18056628') format('woff'), url('../fonts/fontello.ttf?18056628') format('truetype'), url('../fonts/fontello.svg?18056628#fontello') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'fontello';
+    src: url('../font/fontello.svg?18056628#fontello') format('svg');
+  }
+}
+*/
+
+[class^="weather-icon-"]:before, [class*=" weather-icon-"]:before {
+    font-family: "fontello";
+    font-style: normal;
+    font-weight: normal;
+    speak: none;
+    display: inline-block;
+    text-decoration: inherit;
+    width: 1em;
+    margin-right: .2em;
+    text-align: center;
+    /* opacity: .8; */
+    /* For safety - reset parent styles, that can break glyph codes*/
+    font-variant: normal;
+    text-transform: none;
+    /* fix buttons height, for twitter bootstrap */
+    line-height: 1em;
+    /* Animation center compensation - margins should be symmetric */
+    /* remove if not needed */
+    margin-left: .2em;
+    /* you can be more comfortable with increased icons size */
+    /* font-size: 120%; */
+    /* Uncomment for 3D effect */
+    /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+
+.weather-icon-windy-rain-inv:before {
+    content: '\e800';
+}
+/* 'î €' */
+.weather-icon-snow-inv:before {
+    content: '\e801';
+}
+/* 'î ' */
+.weather-icon-snow-heavy-inv:before {
+    content: '\e802';
+}
+/* 'î ‚' */
+.weather-icon-hail-inv:before {
+    content: '\e803';
+}
+/* 'î ƒ' */
+.weather-icon-clouds-inv:before {
+    content: '\e804';
+}
+/* 'î „' */
+.weather-icon-clouds-flash-inv:before {
+    content: '\e805';
+}
+/* 'î …' */
+.weather-icon-temperature:before {
+    content: '\e806';
+}
+/* 'î †' */
+.weather-icon-compass:before {
+    content: '\e807';
+}
+/* 'î ‡' */
+.weather-icon-na:before {
+    content: '\e808';
+}
+/* 'î ˆ' */
+.weather-icon-fahrenheit:before {
+    content: '\e809';
+}
+/* 'î ‰' */
+.weather-icon-clouds-flash-alt:before {
+    content: '\e80a';
+}
+/* 'î Š' */
+.weather-icon-sun-inv:before {
+    content: '\e80b';
+}
+/* 'î ‹' */
+.weather-icon-moon-inv:before {
+    content: '\e80c';
+}
+/* 'î Œ' */
+.weather-icon-cloud-sun-inv:before {
+    content: '\e80d';
+}
+/* 'î ' */
+.weather-icon-cloud-moon-inv:before {
+    content: '\e80e';
+}
+/* 'î Ž' */
+.weather-icon-cloud-inv:before {
+    content: '\e80f';
+}
+/* 'î ' */
+.weather-icon-cloud-flash-inv:before {
+    content: '\e810';
+}
+/* 'î ' */
+.weather-icon-drizzle-inv:before {
+    content: '\e811';
+}
+/* 'î ‘' */
+.weather-icon-rain-inv:before {
+    content: '\e812';
+}
+/* 'î ’' */
+.weather-icon-windy-inv:before {
+    content: '\e813';
+}
+/* 'î “' */
+.weather-icon-sunrise:before {
+    content: '\e814';
+}
+/* 'î ”' */
+.weather-icon-sun:before {
+    content: '\e815';
+}
+/* 'î •' */
+.weather-icon-moon:before {
+    content: '\e816';
+}
+/* 'î –' */
+.weather-icon-eclipse:before {
+    content: '\e817';
+}
+/* 'î —' */
+.weather-icon-mist:before {
+    content: '\e818';
+}
+/* 'î ˜' */
+.weather-icon-wind:before {
+    content: '\e819';
+}
+/* 'î ™' */
+.weather-icon-snowflake:before {
+    content: '\e81a';
+}
+/* 'î š' */
+.weather-icon-cloud-sun:before {
+    content: '\e81b';
+}
+/* 'î ›' */
+.weather-icon-cloud-moon:before {
+    content: '\e81c';
+}
+/* 'î œ' */
+.weather-icon-fog-sun:before {
+    content: '\e81d';
+}
+/* 'î ' */
+.weather-icon-fog-moon:before {
+    content: '\e81e';
+}
+/* 'î ž' */
+.weather-icon-fog-cloud:before {
+    content: '\e81f';
+}
+/* 'î Ÿ' */
+.weather-icon-fog:before {
+    content: '\e820';
+}
+/* 'î  ' */
+.weather-icon-cloud:before {
+    content: '\e821';
+}
+/* 'î ¡' */
+.weather-icon-cloud-flash:before {
+    content: '\e822';
+}
+/* 'î ¢' */
+.weather-icon-cloud-flash-alt:before {
+    content: '\e823';
+}
+/* 'î £' */
+.weather-icon-drizzle:before {
+    content: '\e824';
+}
+/* 'î ¤' */
+.weather-icon-rain:before {
+    content: '\e825';
+}
+/* 'î ¥' */
+.weather-icon-windy:before {
+    content: '\e826';
+}
+/* 'î ¦' */
+.weather-icon-windy-rain:before {
+    content: '\e827';
+}
+/* 'î §' */
+.weather-icon-snow:before {
+    content: '\e828';
+}
+/* 'î ¨' */
+.weather-icon-snow-alt:before {
+    content: '\e829';
+}
+/* 'î ©' */
+.weather-icon-snow-heavy:before {
+    content: '\e82a';
+}
+/* 'î ª' */
+.weather-icon-hail:before {
+    content: '\e82b';
+}
+/* 'î «' */
+.weather-icon-clouds:before {
+    content: '\e82c';
+}
+/* 'î ¬' */
+.weather-icon-clouds-flash:before {
+    content: '\e82d';
+}
+/* 'î ­' */

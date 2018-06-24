@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e94ce814905d4fe3a554062eb67a4fcb" Name="Diagram1">
+        <EntityTypeShape EntityType="DB_A37A16_zaghiniModel.posts" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A37A16_zaghiniModel.tags" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A37A16_zaghiniModel.users" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DB_A37A16_zaghiniModel.usertype" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <AssociationConnector Association="DB_A37A16_zaghiniModel.FK__posts__idtag__182C9B23" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A37A16_zaghiniModel.FK__posts__iduser__173876EA" ManuallyRouted="false" />
+        <AssociationConnector Association="DB_A37A16_zaghiniModel.FK__users__idusertyp__1273C1CD" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DB_A37A16_zaghiniModel.section" Width="1.5" PointX="5.375" PointY="6.375" />
+        <EntityTypeShape EntityType="DB_A37A16_zaghiniModel.sectionitem" Width="1.5" PointX="7.625" PointY="6" />
+        <AssociationConnector Association="DB_A37A16_zaghiniModel.FK__sectionit__idsec__1CF15040" />
+        <AssociationConnector Association="DB_A37A16_zaghiniModel.FK__section__default__1DE57479" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

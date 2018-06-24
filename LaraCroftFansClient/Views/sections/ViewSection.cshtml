@@ -1,0 +1,29 @@
+﻿@model LaraCroftFansClient.Models.section
+
+@{
+    string imageLink = "http://admin.laracroftfans.com/Images/Posts/" + ViewBag.sectionItemDefault.image;
+}
+<div class="article">
+    <div class="inner-article-img" style="background-image: url('@imageLink');">
+        <span class="breadcumb-article">Home <i class="fa fa-angle-right fa-fw"></i> Sections <i class="fa fa-angle-right fa-fw"></i> @Model.description.Substring(0, 5) ...</span>
+    </div>
+    <div class="inner-article">
+
+        <div class="row">
+            <div class=" col-md-8 text">
+                <h1 class="post-title">@Model.description:@ViewBag.sectionItemDefault.title</h1>
+                <hr />
+
+                @Html.Raw(@ViewBag.sectionItemDefault.content)
+            </div>    
+            <div class="col-md-2 item-section">
+                <ul>
+                    @foreach(var item in ViewBag.allItems)
+                    {
+                        <li><a href="@Url.Action("ViewSection","sections",new { id = item.id })">@item.title</a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>   
+</div>

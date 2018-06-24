@@ -1,0 +1,407 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DB_A37A16_zaghiniModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="posts">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="180" Nullable="false" />
+          <Property Name="content" Type="text" Nullable="false" />
+          <Property Name="image" Type="text" />
+          <Property Name="postdate" Type="datetime" Nullable="false" />
+          <Property Name="active" Type="bit" Nullable="false" />
+          <Property Name="onlyregistercanread" Type="bit" Nullable="false" />
+          <Property Name="iduser" Type="int" Nullable="false" />
+          <Property Name="idtag" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="section">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="defaultItem" Type="int" />
+        </EntityType>
+        <EntityType Name="sectionitem">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="content" Type="text" Nullable="false" />
+          <Property Name="active" Type="bit" Nullable="false" />
+          <Property Name="onlyregistercanread" Type="bit" Nullable="false" />
+          <Property Name="idsection" Type="int" Nullable="false" />
+          <Property Name="image" Type="text" />
+        </EntityType>
+        <EntityType Name="tags">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="login" Type="varchar" MaxLength="20" />
+          <Property Name="password" Type="varchar" MaxLength="1024" />
+          <Property Name="idusertype" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="usertype">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <Association Name="FK__posts__idtag__182C9B23">
+          <End Role="tags" Type="Self.tags" Multiplicity="1" />
+          <End Role="posts" Type="Self.posts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tags">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="posts">
+              <PropertyRef Name="idtag" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__posts__iduser__173876EA">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="posts" Type="Self.posts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="posts">
+              <PropertyRef Name="iduser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__section__default__1DE57479">
+          <End Role="sectionitem" Type="Self.sectionitem" Multiplicity="0..1" />
+          <End Role="section" Type="Self.section" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sectionitem">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="section">
+              <PropertyRef Name="defaultItem" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__sectionit__idsec__1CF15040">
+          <End Role="section" Type="Self.section" Multiplicity="1" />
+          <End Role="sectionitem" Type="Self.sectionitem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="section">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="sectionitem">
+              <PropertyRef Name="idsection" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__users__idusertyp__1273C1CD">
+          <End Role="usertype" Type="Self.usertype" Multiplicity="1" />
+          <End Role="users" Type="Self.users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usertype">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="users">
+              <PropertyRef Name="idusertype" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB_A37A16_zaghiniModelStoreContainer">
+          <EntitySet Name="posts" EntityType="Self.posts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="section" EntityType="Self.section" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sectionitem" EntityType="Self.sectionitem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tags" EntityType="Self.tags" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usertype" EntityType="Self.usertype" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__posts__idtag__182C9B23" Association="Self.FK__posts__idtag__182C9B23">
+            <End Role="tags" EntitySet="tags" />
+            <End Role="posts" EntitySet="posts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__posts__iduser__173876EA" Association="Self.FK__posts__iduser__173876EA">
+            <End Role="users" EntitySet="users" />
+            <End Role="posts" EntitySet="posts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__section__default__1DE57479" Association="Self.FK__section__default__1DE57479">
+            <End Role="sectionitem" EntitySet="sectionitem" />
+            <End Role="section" EntitySet="section" />
+          </AssociationSet>
+          <AssociationSet Name="FK__sectionit__idsec__1CF15040" Association="Self.FK__sectionit__idsec__1CF15040">
+            <End Role="section" EntitySet="section" />
+            <End Role="sectionitem" EntitySet="sectionitem" />
+          </AssociationSet>
+          <AssociationSet Name="FK__users__idusertyp__1273C1CD" Association="Self.FK__users__idusertyp__1273C1CD">
+            <End Role="usertype" EntitySet="usertype" />
+            <End Role="users" EntitySet="users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_A37A16_zaghiniModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="posts">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="180" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="postdate" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="active" Type="Boolean" Nullable="false" />
+          <Property Name="onlyregistercanread" Type="Boolean" Nullable="false" />
+          <Property Name="iduser" Type="Int32" Nullable="false" />
+          <Property Name="idtag" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tags" Relationship="Self.FK__posts__idtag__182C9B23" FromRole="posts" ToRole="tags" />
+          <NavigationProperty Name="users" Relationship="Self.FK__posts__iduser__173876EA" FromRole="posts" ToRole="users" />
+        </EntityType>
+        <EntityType Name="tags">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="posts" Relationship="Self.FK__posts__idtag__182C9B23" FromRole="tags" ToRole="posts" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="login" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <Property Name="idusertype" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="posts" Relationship="Self.FK__posts__iduser__173876EA" FromRole="users" ToRole="posts" />
+          <NavigationProperty Name="usertype" Relationship="Self.FK__users__idusertyp__1273C1CD" FromRole="users" ToRole="usertype" />
+        </EntityType>
+        <EntityType Name="usertype">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="users" Relationship="Self.FK__users__idusertyp__1273C1CD" FromRole="usertype" ToRole="users" />
+        </EntityType>
+        <Association Name="FK__posts__idtag__182C9B23">
+          <End Role="tags" Type="Self.tags" Multiplicity="1" />
+          <End Role="posts" Type="Self.posts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tags">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="posts">
+              <PropertyRef Name="idtag" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__posts__iduser__173876EA">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="posts" Type="Self.posts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="posts">
+              <PropertyRef Name="iduser" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__users__idusertyp__1273C1CD">
+          <End Role="usertype" Type="Self.usertype" Multiplicity="1" />
+          <End Role="users" Type="Self.users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usertype">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="users">
+              <PropertyRef Name="idusertype" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB_A37A16_zaghiniEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="posts" EntityType="Self.posts" />
+          <EntitySet Name="tags" EntityType="Self.tags" />
+          <EntitySet Name="users" EntityType="Self.users" />
+          <EntitySet Name="usertype" EntityType="Self.usertype" />
+          <AssociationSet Name="FK__posts__idtag__182C9B23" Association="Self.FK__posts__idtag__182C9B23">
+            <End Role="tags" EntitySet="tags" />
+            <End Role="posts" EntitySet="posts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__posts__iduser__173876EA" Association="Self.FK__posts__iduser__173876EA">
+            <End Role="users" EntitySet="users" />
+            <End Role="posts" EntitySet="posts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__users__idusertyp__1273C1CD" Association="Self.FK__users__idusertyp__1273C1CD">
+            <End Role="usertype" EntitySet="usertype" />
+            <End Role="users" EntitySet="users" />
+          </AssociationSet>
+          <EntitySet Name="section" EntityType="DB_A37A16_zaghiniModel.section" />
+          <EntitySet Name="sectionitem" EntityType="DB_A37A16_zaghiniModel.sectionitem" />
+          <AssociationSet Name="FK__sectionit__idsec__1CF15040" Association="DB_A37A16_zaghiniModel.FK__sectionit__idsec__1CF15040">
+            <End Role="section" EntitySet="section" />
+            <End Role="sectionitem" EntitySet="sectionitem" />
+          </AssociationSet>
+          <AssociationSet Name="FK__section__default__1DE57479" Association="DB_A37A16_zaghiniModel.FK__section__default__1DE57479">
+            <End Role="sectionitem" EntitySet="sectionitem" />
+            <End Role="section" EntitySet="section" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="section">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="sectionitem" Relationship="DB_A37A16_zaghiniModel.FK__sectionit__idsec__1CF15040" FromRole="section" ToRole="sectionitem" />
+          <Property Name="defaultItem" Type="Int32" />
+          <NavigationProperty Name="sectionitem1" Relationship="DB_A37A16_zaghiniModel.FK__section__default__1DE57479" FromRole="section" ToRole="sectionitem" />
+        </EntityType>
+        <EntityType Name="sectionitem">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="content" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="Boolean" Nullable="false" />
+          <Property Name="onlyregistercanread" Type="Boolean" Nullable="false" />
+          <Property Name="idsection" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="section" Relationship="DB_A37A16_zaghiniModel.FK__sectionit__idsec__1CF15040" FromRole="sectionitem" ToRole="section" />
+          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="section1" Relationship="DB_A37A16_zaghiniModel.FK__section__default__1DE57479" FromRole="sectionitem" ToRole="section" />
+        </EntityType>
+        <Association Name="FK__sectionit__idsec__1CF15040">
+          <End Type="DB_A37A16_zaghiniModel.section" Role="section" Multiplicity="1" />
+          <End Type="DB_A37A16_zaghiniModel.sectionitem" Role="sectionitem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="section">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="sectionitem">
+              <PropertyRef Name="idsection" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__section__default__1DE57479">
+          <End Type="DB_A37A16_zaghiniModel.sectionitem" Role="sectionitem" Multiplicity="0..1" />
+          <End Type="DB_A37A16_zaghiniModel.section" Role="section" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sectionitem">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="section">
+              <PropertyRef Name="defaultItem" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB_A37A16_zaghiniModelStoreContainer" CdmEntityContainer="DB_A37A16_zaghiniEntities">
+          <EntitySetMapping Name="posts">
+            <EntityTypeMapping TypeName="DB_A37A16_zaghiniModel.posts">
+              <MappingFragment StoreEntitySet="posts">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="postdate" ColumnName="postdate" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="onlyregistercanread" ColumnName="onlyregistercanread" />
+                <ScalarProperty Name="iduser" ColumnName="iduser" />
+                <ScalarProperty Name="idtag" ColumnName="idtag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tags">
+            <EntityTypeMapping TypeName="DB_A37A16_zaghiniModel.tags">
+              <MappingFragment StoreEntitySet="tags">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="DB_A37A16_zaghiniModel.users">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="idusertype" ColumnName="idusertype" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usertype">
+            <EntityTypeMapping TypeName="DB_A37A16_zaghiniModel.usertype">
+              <MappingFragment StoreEntitySet="usertype">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="section">
+            <EntityTypeMapping TypeName="DB_A37A16_zaghiniModel.section">
+              <MappingFragment StoreEntitySet="section">
+                <ScalarProperty Name="defaultItem" ColumnName="defaultItem" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sectionitem">
+            <EntityTypeMapping TypeName="DB_A37A16_zaghiniModel.sectionitem">
+              <MappingFragment StoreEntitySet="sectionitem">
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="idsection" ColumnName="idsection" />
+                <ScalarProperty Name="onlyregistercanread" ColumnName="onlyregistercanread" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
