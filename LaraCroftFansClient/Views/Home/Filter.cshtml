@@ -9,9 +9,10 @@
         idTag = Int32.Parse(Session["idTag"].ToString());
     }
 }
+<div>
+    <input type="hidden" id="idTag" value="@idTag" />
 
-<input type="hidden" id="idTag" value="@idTag"/>
+    <h1 id="title"></h1>
 
-<h1 id="title"></h1>
-
-<ul id="filterDiv"></ul>
+    <div id="filterDiv" style="padding: 30px"></div>
+</div>

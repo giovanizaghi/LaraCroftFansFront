@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_A37A16_zaghiniModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="posts">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="varchar" MaxLength="180" Nullable="false" />
+    <Property Name="content" Type="text" Nullable="false" />
+    <Property Name="image" Type="text" />
+    <Property Name="postdate" Type="datetime" Nullable="false" />
+    <Property Name="active" Type="bit" Nullable="false" />
+    <Property Name="onlyregistercanread" Type="bit" Nullable="false" />
+    <Property Name="iduser" Type="int" Nullable="false" />
+    <Property Name="idtag" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="section">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="description" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="defaultItem" Type="int" />
+  </EntityType>
+  <EntityType Name="sectionitem">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="content" Type="text" Nullable="false" />
+    <Property Name="active" Type="bit" Nullable="false" />
+    <Property Name="onlyregistercanread" Type="bit" Nullable="false" />
+    <Property Name="idsection" Type="int" Nullable="false" />
+    <Property Name="image" Type="text" />
+  </EntityType>
+  <EntityType Name="tags">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="description" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+    <Property Name="login" Type="varchar" MaxLength="20" />
+    <Property Name="password" Type="varchar" MaxLength="1024" />
+    <Property Name="idusertype" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="usertype">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="description" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <Association Name="FK__posts__idtag__182C9B23">
+    <End Role="tags" Type="Self.tags" Multiplicity="1" />
+    <End Role="posts" Type="Self.posts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tags">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="posts">
+        <PropertyRef Name="idtag" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__posts__iduser__173876EA">
+    <End Role="users" Type="Self.users" Multiplicity="1" />
+    <End Role="posts" Type="Self.posts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="posts">
+        <PropertyRef Name="iduser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__section__default__1DE57479">
+    <End Role="sectionitem" Type="Self.sectionitem" Multiplicity="0..1" />
+    <End Role="section" Type="Self.section" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="sectionitem">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="section">
+        <PropertyRef Name="defaultItem" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__sectionit__idsec__1CF15040">
+    <End Role="section" Type="Self.section" Multiplicity="1" />
+    <End Role="sectionitem" Type="Self.sectionitem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="section">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="sectionitem">
+        <PropertyRef Name="idsection" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__users__idusertyp__1273C1CD">
+    <End Role="usertype" Type="Self.usertype" Multiplicity="1" />
+    <End Role="users" Type="Self.users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usertype">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="users">
+        <PropertyRef Name="idusertype" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DB_A37A16_zaghiniModelStoreContainer">
+    <EntitySet Name="posts" EntityType="Self.posts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="section" EntityType="Self.section" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sectionitem" EntityType="Self.sectionitem" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tags" EntityType="Self.tags" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="usertype" EntityType="Self.usertype" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__posts__idtag__182C9B23" Association="Self.FK__posts__idtag__182C9B23">
+      <End Role="tags" EntitySet="tags" />
+      <End Role="posts" EntitySet="posts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__posts__iduser__173876EA" Association="Self.FK__posts__iduser__173876EA">
+      <End Role="users" EntitySet="users" />
+      <End Role="posts" EntitySet="posts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__section__default__1DE57479" Association="Self.FK__section__default__1DE57479">
+      <End Role="sectionitem" EntitySet="sectionitem" />
+      <End Role="section" EntitySet="section" />
+    </AssociationSet>
+    <AssociationSet Name="FK__sectionit__idsec__1CF15040" Association="Self.FK__sectionit__idsec__1CF15040">
+      <End Role="section" EntitySet="section" />
+      <End Role="sectionitem" EntitySet="sectionitem" />
+    </AssociationSet>
+    <AssociationSet Name="FK__users__idusertyp__1273C1CD" Association="Self.FK__users__idusertyp__1273C1CD">
+      <End Role="usertype" EntitySet="usertype" />
+      <End Role="users" EntitySet="users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

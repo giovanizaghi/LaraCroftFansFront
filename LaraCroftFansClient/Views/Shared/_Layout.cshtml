@@ -14,29 +14,82 @@
 
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
+    <link href="https://fonts.googleapis.com/css?family=Cantarell|Lato|Work+Sans" rel="stylesheet">
+
     @Scripts.Render("~/bundles/modernizr")
+
 </head>
 <body>
-    <div class="top-mobile">
-        <div class="menu-icon">
-            <a id="hamburguer"><img src="~/Images/menu-alt-256.png" width="30" height="30" /></a>
-        </div>
-        <div class="logo-mobile">
-            <a class="logo" href="@Url.Action("Index","Home")">
-                LARA CROFT <font color="#921a1a">FANS</font>
-            </a>
-        </div>
-    </div>
+    @*<div class="top-mobile">
+            <div class="menu-icon">
+                <a id="hamburguer"><img src="~/Images/menu-alt-256.png" width="30" height="30" /></a>
+            </div>
+            <div class="logo-mobile">
+                <a class="logo" href="@Url.Action("Index","Home")">
+                    LARA CROFT <font color="#921a1a">FANS</font>
+                </a>
+            </div>
+        </div>*@
 
-    <div class="left-mobile-menu">
-        <ul class="white-bg">
-            <li><a href="@Url.Action("Index","Home")">HOME</a></li>
-            <li><a href="@Url.Action("Filter","Home")" onclick="SetSession(1)">NEWS</a></li>
-            <li><a href="@Url.Action("Filter","Home")" onclick="SetSession(3)">ARTICLES</a></li>
-            <li><a href="@Url.Action("Filter","Home")" onclick="SetSession(4)">INTERVIEWS</a></li>
+    @*<div class="left-mobile-menu">
+            <ul class="white-bg">
+                <li><a href="@Url.Action("Index","Home")">HOME</a></li>
+                <li><a href="@Url.Action("Filter","Home")" onclick="SetSession(1)">NEWS</a></li>
+                <li><a href="@Url.Action("Filter","Home")" onclick="SetSession(3)">ARTICLES</a></li>
+                <li><a href="@Url.Action("Filter","Home")" onclick="SetSession(4)">INTERVIEWS</a></li>
+                <li><a href="@Url.Action("Filter","Home")" onclick="SetSession(1005)">COSPLAY</a></li>
+                <li>
+                    <a href="#">GAMES<i class="fa fa-chevron-down"></i></a>
+                    <ul>
+                        <li><a href="@Url.Action("ViewSection","sections",new { id = 1 })">Tomb Raider The Atlantean Scion</a></li>
+                        <li><a href="@Url.Action("ViewSection","sections",new { id = 6 })">Tomb Raider The Dagger of Xian</a></li>
+                        <li><a href="@Url.Action("ViewSection","sections",new { id = 7 })">Tomb Raider Adventures of Lara Croft </a></li>
+                        <li><a href="@Url.Action("ViewSection","sections",new { id = 8 })">Tomb Raider The Last Revelation</a></li>
+                        <li><a href="@Url.Action("ViewSection","sections",new { id = 9 })">Tomb Raider Chronicles</a></li>
+                        <li><a href="@Url.Action("ViewSection","sections",new { id = 10 })">Tomb Raider The Angel of Darkness</a></li>
+                        <li><a href="@Url.Action("ViewSection","sections",new { id = 13 })">Tomb Raider Legend</a></li>
+                        <li><a href="@Url.Action("ViewSection","sections",new { id = 20 })">Tomb Raider Anniversary</a></li>
+                        <li><a href="@Url.Action("ViewSection","sections",new { id = 14 })">Tomb Raider Underworld</a></li>
+                        <li><a href="@Url.Action("ViewSection","sections",new { id = 12 })">Tomb Raider (2013)</a></li>
+                        <li><a href="@Url.Action("ViewSection","sections",new { id = 16 })">Rise of the Tomb Raider</a></li>
+                        <li><a href="@Url.Action("ViewSection","sections",new { id = 11 })">Shadow of the Tomb Raider</a></li>
+                        <li><a href="@Url.Action("ViewSection","sections",new { id = 18 })">Lara Croft and The Guardian of Light</a></li>
+                        <li><a href="@Url.Action("ViewSection","sections",new { id = 19})">Lara Croft and The Temple of Osiris</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">MOVIES<i class="fa fa-chevron-down"></i></a>
+                    <ul>
+                        <li><a href="@Url.Action("ViewSection","sections",new { id = 21})">Tomb Raider (2001)</a></li>
+                        <li><a href="@Url.Action("ViewSection","sections",new { id = 22})">Tomb Raider the Cradle of Life</a></li>
+                        <li><a href="@Url.Action("ViewSection","sections",new { id = 24})">Tomb Raider (2018)</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>*@
+
+    <nav id='flexmenu'>
+        <div class="logo">
+            <a href="@Url.Action("Index","Home")">Lara Croft <font color="#c51e1e">Fans</font></a>
+        </div>
+
+        <div id="mobile-toggle" class="button"></div>
+        <ul id="main-menu" style="margin-bottom: 5px;">
+            <li class='active'><a href="@Url.Action("Index","Home")">Home</a></li>
+            <li><a href="@Url.Action("Filter","Home")" onclick="SetSession(1)">News</a></li>
+            <li><a href="@Url.Action("Filter","Home")" onclick="SetSession(3)">Articles</a></li>
+            <li><a href="@Url.Action("Filter","Home")" onclick="SetSession(4)">Interviews</a></li>
+            <li><a href="@Url.Action("Filter","Home")" onclick="SetSession(1005)">Cosplay</a></li>
             <li>
-                <a href="#">GAMES<i class="fa fa-chevron-down"></i></a>
-                <ul>
+                <a href='#'>Games</a>
+                <ul class="sub-menu">
+                    @*<li>
+                            <a href='#'>Product 1</a>
+                            <ul>
+                                <li><a href='#'>Sub Product</a></li>
+                                <li><a href='#'>Sub Product</a></li>
+                            </ul>
+                        </li>*@
                     <li><a href="@Url.Action("ViewSection","sections",new { id = 1 })">Tomb Raider The Atlantean Scion</a></li>
                     <li><a href="@Url.Action("ViewSection","sections",new { id = 6 })">Tomb Raider The Dagger of Xian</a></li>
                     <li><a href="@Url.Action("ViewSection","sections",new { id = 7 })">Tomb Raider Adventures of Lara Croft </a></li>
@@ -54,127 +107,57 @@
                 </ul>
             </li>
             <li>
-                <a href="#">MOVIES<i class="fa fa-chevron-down"></i></a>
-                <ul>
+                <a href='#'>Movies</a>
+                <ul class="sub-menu">
                     <li><a href="@Url.Action("ViewSection","sections",new { id = 21})">Tomb Raider (2001)</a></li>
                     <li><a href="@Url.Action("ViewSection","sections",new { id = 22})">Tomb Raider the Cradle of Life</a></li>
                     <li><a href="@Url.Action("ViewSection","sections",new { id = 24})">Tomb Raider (2018)</a></li>
                 </ul>
             </li>
-            @*<li><a href="#">EXTRAS<i class="fa fa-chevron-down"></i></a></li>*@
+            <li><a href="@Url.Action("ViewSection","sections",new { id = 25 })">About Us</a></li>
+            <li><a href="@Url.Action("ViewSection","sections",new { id = 26 })">Contact</a></li>
         </ul>
-    </div>
-    <div class="g1-body-inner">
-        <div id="page">
-            <div class="g1-row g1-row-layout-page g1-hb-row g1-hb-row-normal g1-hb-row-a g1-hb-row-1 g1-hb-boxed g1-hb-sticky-off g1-hb-shadow-off black-bg" style="background-color: #505050; height: 30px;">
-                <div class="g1-row-inner">
-                    <div class="g1-column g1-dropable">
-                        <div class="g1-bin g1-bin-1 g1-bin-align-left g1-bin-grow-off">
-                            <nav id="g1-secondary-nav" class="g1-secondary-nav">
-                                <ul id="g1-secondary-nav-menu" class="g1-secondary-nav-menu">
-                                    <li class="menu-item"><a href="@Url.Action("ViewSection","sections",new { id = 25 })">About Us</a></li>
-                                    <li class="menu-item"><a href="@Url.Action("ViewSection","sections",new { id = 26 })">Contact</a></li>
-                                </ul>
-                            </nav>
-                        </div>
-                        <div class="g1-bin g1-bin-2 g1-bin-align-center g1-bin-grow-off"></div>
-                        <div class="g1-bin g1-bin-3 g1-bin-align-right g1-bin-grow-off">
-                            <ul id="g1-social-icons-1" class="g1-socials-items g1-socials-items-tpl-grid g1-socials-hb-list g1-socials-s">
-                                <li class="g1-socials-item g1-socials-item-facebook">
-                                    <a href="https://www.facebook.com/laracroft.fans.page/"><i class="fa fa-facebook fa-fw"></i></a>
-                                </li>
-                                <li class="g1-socials-item g1-socials-item-facebook">
-                                    <a href="https://www.instagram.com/l.c_fans/"><i class="fa fa-instagram fa-fw"></i></a>
-                                </li>
-                                <li class="g1-socials-item g1-socials-item-facebook">
-                                    <a href="https://www.youtube.com/channel/UCuTNe1GJKFuqEK_CmWZN4Og"><i class="fa fa-youtube fa-fw"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="g1-row-background"></div>
-            <div class="main-header">
-                <a href="@Url.Action("Index","Home")">
-                    <img src="~/Images/logo-shadow.png" />
-                </a>
-            </div>
-            <div class="g1-row g1-row-layout-page g1-hb-row g1-hb-row-normal g1-hb-row-b g1-hb-row-2 g1-hb-boxed g1-hb-sticky-off g1-hb-shadow-off white-bg" style="background-color: #fff; padding: 20px 0px 20px 0px;">
-                <div class="g1-row-inner">
-                    <div class="g1-column g1-dropable">
-                        <div class="g1-bin g1-bin-1 g1-bin-align-left g1-bin-grow-off">
-                            <div class="g1-id">
-                                <h3 class="g1-mega g1-mega-1st site-title">
-                                    <a class="g1-logo-wrapper logo" href="@Url.Action("Index","Home")">
-                                        <img src="~/Images/logo-deux.png"  width="70"/>
-                                    </a>
-                                </h3>
-                            </div>
-                            <nav id="g1-primary-nav" class="g1-primary-nav">
-                                <ul class="menu-items">
-                                    <li><a href="@Url.Action("Index","Home")">HOME</a></li>
-                                    <li><a href="@Url.Action("Filter","Home")" onclick="SetSession(1)">NEWS</a></li>
-                                    <li><a href="@Url.Action("Filter","Home")" onclick="SetSession(3)">ARTICLES</a></li>
-                                    <li><a href="@Url.Action("Filter","Home")" onclick="SetSession(4)">INTERVIEWS</a></li>
-                                    <li>
-                                        <a class="sub-menu-item" href="#">GAMES<i class="fa fa-chevron-down"></i></a>
-                                        <ul class="home-submenu">
-                                            <li><a href="@Url.Action("ViewSection","sections",new { id = 1 })">Tomb Raider The Atlantean Scion</a></li>
-                                            <li><a href="@Url.Action("ViewSection","sections",new { id = 6 })">Tomb Raider The Dagger of Xian</a></li>
-                                            <li><a href="@Url.Action("ViewSection","sections",new { id = 7 })">Tomb Raider Adventures of Lara Croft </a></li>
-                                            <li><a href="@Url.Action("ViewSection","sections",new { id = 8 })">Tomb Raider The Last Revelation</a></li>
-                                            <li><a href="@Url.Action("ViewSection","sections",new { id = 9 })">Tomb Raider Chronicles</a></li>
-                                            <li><a href="@Url.Action("ViewSection","sections",new { id = 10 })">Tomb Raider The Angel of Darkness</a></li>
-                                            <li><a href="@Url.Action("ViewSection","sections",new { id = 13 })">Tomb Raider Legend</a></li>
-                                            <li><a href="@Url.Action("ViewSection","sections",new { id = 20 })">Tomb Raider Anniversary</a></li>
-                                            <li><a href="@Url.Action("ViewSection","sections",new { id = 14 })">Tomb Raider Underworld</a></li>
-                                            <li><a href="@Url.Action("ViewSection","sections",new { id = 12 })">Tomb Raider (2013)</a></li>
-                                            <li><a href="@Url.Action("ViewSection","sections",new { id = 16 })">Rise of the Tomb Raider</a></li>
-                                            <li><a href="@Url.Action("ViewSection","sections",new { id = 11 })">Shadow of the Tomb Raider</a></li>
-                                            <li><a href="@Url.Action("ViewSection","sections",new { id = 18 })">Lara Croft and The Guardian of Light</a></li>
-                                            <li><a href="@Url.Action("ViewSection","sections",new { id = 19})">Lara Croft and The Temple of Osiris</a></li>
+    </nav>
 
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a class="sub-menu-item" href="#">MOVIES<i class="fa fa-chevron-down"></i></a>
-                                        <ul class="home-submenu">
-                                            <li><a href="@Url.Action("ViewSection","sections",new { id = 21})">Tomb Raider (2001)</a></li>
-                                            <li><a href="@Url.Action("ViewSection","sections",new { id = 22})">Tomb Raider the Cradle of Life</a></li>
-                                            <li><a href="@Url.Action("ViewSection","sections",new { id = 24})">Tomb Raider (2018)</a></li>
-                                        </ul>
-                                    </li>
-                                    @*<li><a href="#">EXTRAS<i class="fa fa-chevron-down"></i></a></li>*@
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="g1-row-background"></div>
-            @RenderBody()
+    <section style="width: 100%;">
+        @RenderBody()
+    </section>
 
-            <div class="g1-row g1-row-layout-page g1-prefooter">
-                <div class="g1-row-inner">
-                    <div class="g1-column g1-column-1of3"></div>
-                    <div class="g1-column g1-column-1of3"></div>
-                    <div class="g1-column g1-column-1of3"></div>
-                </div>
-                <div class="g1-row-background"></div>
-            </div>
-            <div class="g1-row g1-row-layout-page g1-footer" style="background-color: #fff;">
-                <div class="g1-row-inner">
-                    <div class="g1-column">
-                        <p class="g1-footer-text">© 2018 - @DateTime.Today.Year All rights reserved. Lara Croft Fans is an Official Tomb Raider fansite. All articles are copyright to the team. Thank you and enjoy your stay! LARA CROFT and TOMB RAIDER are trademarks or registered trademarks of Square Enix Limited.</p>
-                        <a class="g1-footer-stamp"></a>
-                    </div>
-                    <div class="g1-row-background"></div>
-                </div>
-            </div>
+    <footer class="main-footer">
+        <div class="row">
+            <article class="col-md-4 footer-display">
+                <span class="logo">LARA CROFT FANS</span>
+                <span>© @DateTime.Today.Year Lara Croft Fans | Design by Giovani Zaghi</span>
+            </article>
+            <article class="col-md-4 footer-display">
+                <h1>Tomb Raider Links</h1>
+                <ul>
+                    <li><a href="https://www.facebook.com/TombRaider">Facebook</a></li>
+                    <li><a href="https://twitter.com/tombraider">Twitter</a></li>
+                    <li><a href="https://www.youtube.com/user/tombraider">Youtube</a></li>
+                    <li><a href="https://www.instagram.com/tombraider/">Instagram</a></li>
+                    <li><a href="https://tombraider.square-enix-games.com/en-us">Website</a></li>
+                </ul>
+            </article>
+            <article class="col-md-4 footer-display">
+                <h1>Lara Croft Links</h1>
+                <ul>
+                    <li><a href="https://www.facebook.com/laracroft">Facebook</a></li>
+                    <li><a href="https://twitter.com/laracroft">Twitter</a></li>
+                    <li><a href="https://www.youtube.com/user/tombraider">Youtube</a></li>
+                    <li><a href="https://www.instagram.com/tombraider/">Instagram</a></li>
+                    <li><a href="https://tombraider.square-enix-games.com/en-us">Website</a></li>
+                </ul>
+            </article>
+            <article class="col-md-4 footer-display"></article>
         </div>
-    </div>
+        <div class="row">
+            <article class="col-md-12 footer-display" style="font-size: 12px;">
+                © 2018 - @DateTime.Today.Year All rights reserved. Lara Croft Fans is an Official Tomb Raider fansite. All articles are copyright to the team. Thank you and enjoy your stay! LARA CROFT and TOMB RAIDER are trademarks or registered trademarks of Square Enix Limited.
+            </article>
+        </div>
 
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
@@ -192,29 +175,9 @@
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
     </script>
-
-
-    <script>
-        $(document).ready(function () {
-            $(".sub-menu-item").mouseover(function (data) {
-                $(".home-submenu").hide();
-                $(this.nextElementSibling).show('blind');
-            });
-
-            $(".home-submenu").mouseleave(function (data) {
-                $(this).hide('blind');
-            });
-
-            $(".menu-items>li>a").mouseover(function () {
-                if (this.className != "sub-menu-item") {
-                    $(".home-submenu").hide();
-                }
-            });
-        });
-    </script>
-
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-64062400-1"></script>
+
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
@@ -228,7 +191,7 @@
                     slidesToShow: 3,
                     slidesToScroll: 1,
                     autoplay: true,
-                    autoplaySpeed: 2000,
+                    autoplaySpeed: 5000,
                     responsive: [
                         {
                             breakpoint: 1024,
@@ -253,7 +216,10 @@
                                 slidesToScroll: 1
                             }
                         }
-                    ]
+                    ],
+                    dots: false,
+                    prevArrow: false,
+                    nextArrow: false,
                 });
             });
     </script>

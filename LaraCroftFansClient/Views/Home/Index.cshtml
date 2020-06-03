@@ -1,10 +1,13 @@
 ﻿@model IEnumerable<LaraCroftFansClient.Models.posts>
 
 @{
-    ViewBag.Title = "Lara Croft Fans - Home";
+    ViewBag.Title = "Lara Croft Fans - Home";    
+    bool isFirstPage = Session["isFirstPage"] != null ? Convert.ToBoolean(Session["isFirstPage"].ToString()) : false;
+    bool isLastPage = Session["isLastPage"] != null ? Convert.ToBoolean(Session["IsLastPage"].ToString()) : false;
 }
+<div class="main-header"></div>
 
-<section class="archive-featured archive-featured-stretched archive-featured-with-title">
+<section style="width: 100%; margin-bottom: 30px;">
     <div id="sliderHome">
         @foreach (var item in Model)
         {
@@ -18,49 +21,55 @@
     </div>
 </section>
 
-
-
-<div class="g1-row g1-row-layout-page g1-row-padding-m archive-body">
-    <div class="g1-row-inner" style="background-color: #fff;">
-        <div id="primary" class="g1-column g1-column-2of3">
-            <div class="g1-collection">
-                <div class="g1-collection-viewport">
-                    <ul id="initialPosts" class="g1-collection-items"></ul>
-                </div>
+<section class="main-wrapper">
+    <div class="col-md-8">
+        <div class="row">
+            <div class="col-md-12 main-article">
+                @Html.Partial("_HomePagePosts", Model)
             </div>
         </div>
-        <div id="secondary" class="g1-column g1-column-1of3">
-            <aside class="widget widget_g1_socials">
-                <div class="social-btns">
-                    <a class="btn facebook" href="https://www.facebook.com/laracroft.fans.page/">
-                        <i class="fa fa-facebook"></i>
-                    </a>
-                    <a class="btn twitter" href="https://www.instagram.com/l.c_fans/">
-                        <i class="fa fa-instagram"></i>
-                    </a>
-                    <a class="btn google" href="https://www.youtube.com/channel/UCuTNe1GJKFuqEK_CmWZN4Og">
-                        <i class="fa fa-youtube"></i>
-                    </a>
-                </div>
-            </aside>
-            <aside class="widget widget_adace_ads_widget">
-                <!-- Lc Fans Home -->
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-5534557502262674"
-                     data-ad-slot="4973363651"
-                     data-ad-format="auto"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-            </aside>
-            <aside id="text-11" class="widget widget_text">
-                <h1 class="widget-title">Last Instagram Posts</h1>
-                <!-- SnapWidget -->
-                <script src="https://snapwidget.com/js/snapwidget.js"></script>
-                <iframe src="https://snapwidget.com/embed/557409" class="snapwidget-widget" allowTransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:100%; "></iframe>
-            </aside>
+        <div class="row" style="margin: 20px 0">
+            <div class="col-xs-4 text-left">
+                <a id="btnPrevious" class="btn btn-default" onclick="LoadPost('Previous')"><i class="fa fa-angle-left"></i> Previous</a>
+            </div>
+            <div class="col-xs-4">
+                <span id="pageNumberArea"></span>
+            </div>
+            <div class="col-xs-4 text-right">
+                <a id="btnNext" class="btn btn-default" onclick="LoadPost('Next')">Next <i class="fa fa-angle-right"></i></a>
+            </div>
         </div>
+        @*<ul id="initialPosts" class="g1-collection-items"></ul>*@
     </div>
-    <div class="g1-row-background"></div>
-</div>
+    <div class="col-md-4">
+        <aside class="card card-widget">
+            <h1>Social Media</h1>
+            <div class="social-btns">
+                <a class="btn facebook" href="https://www.facebook.com/laracroft.fans.page/">
+                    <i class="fa fa-facebook"></i>
+                </a>
+                <a class="btn twitter" href="https://www.instagram.com/l.c_fans/">
+                    <i class="fa fa-instagram"></i>
+                </a>
+                <a class="btn google" href="https://www.youtube.com/channel/UCuTNe1GJKFuqEK_CmWZN4Og">
+                    <i class="fa fa-youtube"></i>
+                </a>
+            </div>
+        </aside>
+        <aside class="card card-widget">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-5534557502262674"
+                 data-ad-slot="4973363651"
+                 data-ad-format="auto"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </aside>
+        <aside id="text-11" class="card card-widget">
+            <h1>Last From Instagram</h1>
+            <script src="https://snapwidget.com/js/snapwidget.js"></script>
+            <iframe src="https://snapwidget.com/embed/557409" class="snapwidget-widget" allowTransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:100%; "></iframe>
+        </aside>
+    </div>
+</section>

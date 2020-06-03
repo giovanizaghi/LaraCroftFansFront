@@ -1,7 +1,7 @@
 ﻿@import '//codepen.io/chrisdothtml/pen/ojLzJK.css';
 
 body {
-    background-image: url('../Images/pattern.jpg') !important;
+    background-color: #f7f7f7 !important;
 }
 
 @font-face {
@@ -24,6 +24,10 @@ body {
     src: url('../fonts/Montserrat-Light.otf') format('opentype');
 }
 
+#pageNumberArea {
+    font-size: 14px;
+}
+
 .main-header {
     width: 100%;
     height: 350px;
@@ -32,6 +36,7 @@ body {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 1920px 350px;
+    margin-bottom: 10px;
 }
 
     .main-header img {
@@ -94,13 +99,6 @@ body {
     color: #666;
     max-width: 1182px;
     margin: 0 auto;
-}
-
-.logo {
-    font-family: Tomb_Raider;
-    color: #181818;
-    font-size: 28px;
-    vertical-align: middle;
 }
 
 
@@ -317,38 +315,14 @@ body {
         word-break: break-word;
     }
 
-.all-content {
-    width: 100%;
-    min-height: 500px;
+.interviews h1, .widget-title h1 {
+    margin: 9px 0px 0px 15px;
+    background-color: #1e3e50;
+    padding: 5px 0px 5px 11px;
+    border-radius: 4px;
+    color: #f3f3f3;
+    font-size: 25px;
 }
-
-.home-wrapper {
-    width: 100%;
-    max-width: 1380px;
-    margin: 0 auto;
-}
-
-footer {
-    width: calc(100% - 100px);
-    margin: 0 auto;
-    background-color: rgba(255, 255, 255, 0.90);
-    padding: 10px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    margin-bottom: 200px;
-}
-
-.interviews {
-}
-
-    .interviews h1, .widget-title h1 {
-        margin: 9px 0px 0px 15px;
-        background-color: #1e3e50;
-        padding: 5px 0px 5px 11px;
-        border-radius: 4px;
-        color: #f3f3f3;
-        font-size: 25px;
-    }
 
 .interview-item {
     width: 250px;
@@ -483,13 +457,7 @@ a.effect-box:hover:before {
     padding: 5px;
 }
 
-.post-title {
-    font-family: 'Bebas Neue';
-    margin-bottom: 5px;
-    font-size: 2em;
-    text-align: left;
-    line-height: 35px;
-}
+
 
 .suggest-item {
     width: 100%;
@@ -636,16 +604,6 @@ a.effect-box:hover:before {
     margin: 30px 80px;
 }
 
-.home-img {
-    border-radius: 10px;
-    box-shadow: 1px 4px 6px 0px rgba(0, 0, 0, 0.52);
-    transition: all 0.5s;
-}
-
-    .home-img:hover {
-        box-shadow: 0 0 16px 6px rgba(0, 0, 0, 0.15);
-    }
-
 
 .home-user-img {
     width: 40px;
@@ -679,8 +637,9 @@ h3, .g1-gamma {
 }
 
 .entry-tpl-list .entry-title {
-    padding-top: .75em;
-    margin-bottom: .75em;
+    padding-top: 0;
+    margin-bottom: 0;
+    font-size: 1.9em;
 }
 
 .entry-header .entry-title {
@@ -713,6 +672,7 @@ a, .entry-title > a:hover, .entry-meta a:hover, .menu-item > a:hover, .current-m
 
 .white-bg a {
     color: #181818;
+    font-size: 1.5em;
 }
 
 a:hover {
@@ -742,17 +702,6 @@ a:hover, a:active {
     position: relative;
     width: 100%;
     margin: 0 auto;
-}
-
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, address, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, abbr, acronym, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
-    margin: 0;
-    padding: 0;
-    border-width: 0;
-    border-style: solid;
-    outline: 0;
-    font-size: 100%;
-    vertical-align: baseline;
-    background: 0 0;
 }
 
 .g1-row-inner {
@@ -808,11 +757,6 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     font-size: 0;
 }
 
-
-ol, ul {
-    list-style: none;
-}
-
 .g1-collection-item {
     display: inline-block;
     -webkit-box-sizing: border-box;
@@ -820,15 +764,11 @@ ol, ul {
     box-sizing: border-box;
     width: 100%;
     margin: 0;
-    padding: 0 10px;
+    padding: 30px 5px 10px 5px;
     vertical-align: top;
     font-size: 1rem;
 }
 
-li {
-    display: list-item;
-    text-align: -webkit-match-parent;
-}
 
 .entry-tpl-list {
     width: 100%;
@@ -838,7 +778,7 @@ li {
 
 
     .entry-tpl-list .entry-featured-media {
-        margin: 0;
+        margin: 20px 0 0 0;
     }
 
 .g1-frame {
@@ -934,10 +874,6 @@ li {
     #secondary .widget {
         margin-bottom: 3rem;
     }
-
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
-    display: block;
-}
 
 .g1-socials-items-tpl-grid {
     font-size: 0;
@@ -1206,6 +1142,16 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
         transform: scale(1);
     }
 
+.footer-display {
+    display: grid;
+    line-height: 15px;
+    margin-top: 15px;
+}
+
+    .footer-display ul {
+        list-style: none;
+    }
+
 .social-btns {
     margin: auto;
     font-size: 0;
@@ -1227,7 +1173,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
         position: relative;
         overflow: hidden;
         border-radius: 28%;
-        box-shadow: 0 5px 15px -5px rgba(0,0,0,0.1);
+        box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.58);
         opacity: 0.99;
     }
 
@@ -1323,6 +1269,20 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     padding: 10px 0px 10px 0px;
 }
 
+.main-wrapper {
+    width: 85%;
+    margin: 0 auto;
+}
+
+.main-footer {
+    background-color: #171821;
+    width: 100%;
+    display: inline-block;
+    color: #fff;
+    padding: 20px 20px 20px 20px;
+    font-size: 14px;
+}
+
 @media only screen and (max-width: 601px) {
     .top-mobile {
         width: 100%;
@@ -1356,6 +1316,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
         font-size: 0;
         vertical-align: initial;
         background: 0 0;
+        display: block;
     }
 }
 
@@ -1377,8 +1338,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
         }
 }
 
+@media screen and (max-width: 768px) {
+    .main-header {
+        display: none;
+    }
+}
 
 @media only screen and (min-width: 801px) {
+
 
     .archive-body {
         padding-top: 20px;

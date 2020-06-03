@@ -1,0 +1,46 @@
+﻿@model IEnumerable<LaraCroftFansClient.Models.posts>
+<div class="row">
+    <div class="col-md-12 section-title">
+        <h1>Latest posts</h1>
+    </div>
+</div>
+<div id="initialPosts" class="row">
+
+    @foreach (var item in Model)
+    {
+        string urlPostImage = "http://admin.laracroftfans.com/Images/Posts/" + item.image;
+        string urlUserImage = "http://admin.laracroftfans.com/Images/Users/image" + item.users.id + ".jpg";
+        var action = Url.Action("ViewPost", "Posts", new { id = item.id });
+        <div class="col-md-6">
+            <article class="entry card">
+                <div class="entry__img-holder card__img-holder">
+                    <a href="@action">
+                        <div class="thumb-container thumb-70">
+                            <img data-src="@urlPostImage" src="@urlPostImage" class="entry__img lazyloaded" alt="">
+                        </div>
+                    </a>
+                    <a href="@Url.Action("Filter","Home")" onclick="SetSession(@item.tags.id)" class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--violet">@item.tags.description</a>
+                </div>
+                <div class="entry__body card__body">
+                    <div class="entry__header">
+                        <h2 class="entry__title">
+                            <a href="@action">@item.title</a>
+                        </h2>
+                        <ul class="entry__meta">
+                            <li class="entry__meta-author">
+                                <span>by</span>
+                                <a href="#">@item.users.name</a>
+                            </li>
+                            <li class="entry__meta-date">
+                                @item.postdate.ToString("ddd, MMM d, yyyy")
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="entry__excerpt">
+                        <p>@item.content ...</p>
+                    </div>
+                </div>
+            </article>
+        </div>
+    }
+</div>

@@ -14,7 +14,8 @@ namespace LaraCroftFansClient
                         "~/Scripts/slick.min.js",
                         "~/Scripts/AjaxCalls.js",
                         "~/Scripts/HomePageController.js",
-                        "~/Scripts/moment.js"
+                        "~/Scripts/moment.js",
+                        "~/Scripts/new-menu.js"
                         ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
@@ -36,7 +37,12 @@ namespace LaraCroftFansClient
                       "~/Content/jquery-ui.theme.min.css",
                       "~/Content/font-awesome.css",
                       "~/Content/slick.css",
-                      "~/Content/slick-theme.css"
+                      "~/Content/slick-theme.css",
+                      "~/Content/article-format.css",
+                      "~/Content/PagedList.css",
+                      "~/Content/Articles.css",
+                      "~/Content/new-menu.css",
+                      "~/Content/article-exibition.css"
                       ));
         }
     }

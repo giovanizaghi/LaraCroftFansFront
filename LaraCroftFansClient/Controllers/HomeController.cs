@@ -1,12 +1,9 @@
 ﻿using LaraCroftFansClient.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
 
 namespace LaraCroftFansClient.Controllers
 {
@@ -20,11 +17,11 @@ namespace LaraCroftFansClient.Controllers
 
             var posts = db.posts.Include(p => p.tags).Include(p => p.users);
 
-            var retorno = posts.ToList().Where(x => x.active == true).OrderByDescending(x => x.postdate).Take(5);
+            var retorno = posts.ToList().Where(x => x.active == true).OrderByDescending(x => x.postdate).Take(6);
 
             foreach (var item in retorno)
             {
-                item.content = StripHTML(item.content);
+                item.content = StripHTML(item.content).Substring(0, 30);
             }
 
             return View(retorno);
@@ -36,24 +33,47 @@ namespace LaraCroftFansClient.Controllers
         }
 
         [HttpPost]
-        public JsonResult LoadInitialPosts()
+        public JsonResult LoadInitialPosts(string action)
         {
+            int pageNumber;
+
+            if (Session["ActualPage"] != null)
+                pageNumber = Convert.ToInt32(Session["ActualPage"].ToString());
+            else
+                pageNumber = 0;
+
+            if (action == "Home")
+                pageNumber = 0;
+            else if (action == "Next")
+                pageNumber++;
+            else if (action == "Previous")
+                pageNumber--;
+
+            Session["ActualPage"] = pageNumber;
+
             var posts = (from p in db.posts
                          join t in db.tags on p.idtag equals t.id
                          where p.active == true
                          orderby p.postdate descending
-                         select new
+                         select new PostsDTO
                          {
                              idpost = p.id,
-                             p.title,
-                             p.users.name,
+                             title = p.title,
+                             name = p.users.name,
                              iduser = p.users.id,
-                             p.postdate,
-                             p.image,
-                             t.description
+                             postdate = p.postdate,
+                             image = p.image,
+                             description = t.description,
+                             page = pageNumber,
+                             content = p.content
                          }
+                ).Skip(5 * pageNumber).Take(6).ToList();
 
-                ).ToList().Take(10);
+
+            foreach (var item in posts)
+            {
+                item.content = StripHTML(item.content).Substring(0, 50);
+            }
 
             JsonResult json = Json(posts);
 
@@ -85,17 +105,23 @@ namespace LaraCroftFansClient.Controllers
                          join t in db.tags on p.idtag equals t.id
                          where t.id == id && p.active == true
                          orderby p.postdate descending
-                         select new
+                         select new PostsDTO
                          {
                              idpost = p.id,
-                             p.title,
-                             p.users.name,
+                             title = p.title,
+                             name = p.users.name,
                              iduser = p.users.id,
-                             p.postdate,
-                             p.image,
-                             t.description
+                             postdate = p.postdate,
+                             image = p.image,
+                             description = t.description,
+                             content = p.content,
+                             tagId = t.id
                          }).ToList();
 
+            foreach (var item in posts)
+            {
+                item.content = StripHTML(item.content).Substring(0, 30);
+            }
             JsonResult json = Json(posts);
 
             return json;
@@ -103,7 +129,7 @@ namespace LaraCroftFansClient.Controllers
 
         public string StripHTML(string input)
         {
-            return Regex.Replace(input, "<.*?>", String.Empty);
+            return Regex.Replace(input, "<.*?>", String.Empty).Replace("&nbsp;", " ");
         }
 
         [HttpPost]

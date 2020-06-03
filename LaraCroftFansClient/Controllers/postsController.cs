@@ -13,6 +13,13 @@ namespace LaraCroftFansClient.Controllers
     {
         private DB_A37A16_zaghiniEntities db = new DB_A37A16_zaghiniEntities();
 
+        public ActionResult _HomePagePosts()
+        {
+            var posts = db.posts.Include(x => x.users).Include(x => x.tags).ToList();
+
+            return PartialView(posts);
+        }
+
         public ActionResult ViewPost(int? id)
         {
 

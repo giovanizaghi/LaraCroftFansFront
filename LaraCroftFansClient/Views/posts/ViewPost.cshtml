@@ -15,11 +15,12 @@
         <div class="row">
             <div class="text">
                 <h1 class="post-title">@Model.title</h1>
-                <img class="user-image" src="@userImageLink" />
-                <span style="color:#808080;"> By @Model.users.name in  @Model.postdate.ToString("yyyy-MM-dd")</span>
+                <i class="fa fa-user fa-fw"></i>
+                <span style="color:#808080;">@Model.users.name | @Model.postdate.ToString("dddd, MMMM d, yyyy")</span>
                 <hr />
-
-                @Html.Raw(Model.content)
+                <div class="content-article">
+                    @Html.Raw(Model.content)
+                </div>
 
                 <div class="row">
                     <div class="about-author">

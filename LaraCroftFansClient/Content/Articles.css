@@ -1,0 +1,22 @@
+﻿.layout-main-size {
+    width: 1200px;
+    margin: 0 auto;
+    background-color: #fff;
+}
+
+.home-img {
+    border-radius: 10px;
+    transition: all 0.3s;
+}
+
+    .home-img:hover {
+        border-radius: 15px;
+    }
+
+@media only screen and (max-width: 601px) {
+    .layout-main-size {
+        width: 100%;
+        margin: 0 auto;
+        background-color: #fff;
+    }
+}
